@@ -1,1 +1,30 @@
 
+<%= @post.title %><br>
+<%= @post.content %><br>
+
+Comments:
+<ul>
+  <%=@post.comments.each do |c| %><br>
+    <li><%= "#{c.user_name} says: #{c.content} " %></li>
+  <% end %>
+</ul>
+
+Users who've commented:
+
+<ul>
+  <%=@post.commenters.each do |u| %><br>
+    <li><%= u %></li>
+  <% end %>
+</ul>
+
+New Comment:<br>
+<%= form_for @comment do |f| %>
+  <%= f.text_area :content %><br>
+  <%= f.hidden_field :post_id, value: @post.id %>
+
+  Select User:<%= f.collection_select :user_id, User.all, :id, :username, {include_blank: "New User"} %><br>
+  <%= f.fields_for :user do |u| %>
+    <%= u.text_field :username %>
+  <% end %>
+  <%= f.submit "Create Comment" %>
+  <% end %>

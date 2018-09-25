@@ -1,7 +1,9 @@
 
 <h1><%= @post.title %></h1><br>
 <p><%= @post.content %><p><br><br>
-<p><%= @post.categories.name %><p>
+<p><% @post.categories.each do |c|%>
+    <%= c.name %>
+  <% end %><p>
 
 <h4>Comments:</h4>
 <ul>

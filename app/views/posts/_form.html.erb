@@ -2,7 +2,7 @@
   Title <%= f.text_field :title %><br>
   Content <%= f.text_area :content %><br><br>
 
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <%= f.collection_check_boxes :categories_ids, Category.all, :id, :name %>
   <%= f.fields_for :categories, post.categories.build do |c| %>
     <%= c.text_field :name %>
   <% end  %>

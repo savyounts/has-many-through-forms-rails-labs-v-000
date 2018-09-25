@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+
   def create 
     if !params[:comment][:user_id].empty? 
       @user = User.find(params[:comment][:user_id]) 

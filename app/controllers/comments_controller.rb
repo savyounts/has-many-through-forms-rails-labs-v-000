@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
   def create
-    binding.pry
     if !params[:comment][:user_id].empty?
       @comment = Comment.create(comment_params(:content, :post_id, :user_id))
     else

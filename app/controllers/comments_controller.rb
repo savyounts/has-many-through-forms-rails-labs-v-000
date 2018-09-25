@@ -2,7 +2,7 @@ require 'pry'
 class CommentsController < ApplicationController
 
   def create
-    
+
     if !params[:comment][:user_id].empty?
       @comment = Comment.create(comment_params)
     else

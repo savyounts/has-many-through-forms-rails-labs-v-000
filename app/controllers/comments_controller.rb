@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     if !params[:comment][:user_id].empty?
       @comment = Comment.create(comment_params)
-    elsif params[:comment][:user_id].empty?
+    else params[:comment][:user_id].empty?
       @user = User.create(username: params[:comment][:user_attributes][:username])
       @comment = Comment.create(content: params[:comment][:content], user_id: @user.id, post_id: params[:comment][:post_id]) 
     end 

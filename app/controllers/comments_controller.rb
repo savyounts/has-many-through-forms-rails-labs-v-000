@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       @user = User.create(username: params[:comment][:user_attributes][:username])
       @comment = Comment.create(comment_params) 
     end 
-      redirect_to post_path(comment.post)
+      redirect_to post_path(@comment.post)
   end
 
 

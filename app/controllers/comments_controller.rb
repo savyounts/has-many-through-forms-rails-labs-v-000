@@ -2,14 +2,14 @@ require 'pry'
 class CommentsController < ApplicationController
 
   def create
-
-    if !params[:comment][:user_id].empty?
-      @comment = Comment.create(comment_params)
-    else
-      binding.pry
-      @user = User.create(username: params[:comment][:user_attributes][:username])
-      @comment = Comment.create(comment_params) 
-    end 
+    comment = Comment.create(comment_params)
+    # if !params[:comment][:user_id].empty?
+    #   @comment = Comment.create(comment_params)
+    # else
+    #   binding.pry
+    #   @user = User.create(username: params[:comment][:user_attributes][:username])
+    #   @comment = Comment.create(comment_params) 
+    # end 
       redirect_to post_path(@comment.post)
   end
 

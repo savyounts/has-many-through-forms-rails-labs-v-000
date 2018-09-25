@@ -5,7 +5,9 @@
 Comments:
 <ul>
   <%=@post.comments.each do |c| %><br>
+    <%= binding.pry %>
     <li><%= "#{c.user_name} says: #{c.content} " %></li>
+
   <% end %>
 </ul>
 

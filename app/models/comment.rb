@@ -3,19 +3,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   accepts_nested_attributes_for :user, reject_if: :all_blank
 
-
-  # def reject_user
-  #   attributes[:username].blank?
-  # end
-
   def user_name
     self.user.username
   end
-
-  # def user_attributes=(user)
-  #   binding.pry
-  #   self.user = User.find_by(username: user.username)
-  #   self.user.update(user)
-  # end
 
 end

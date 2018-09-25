@@ -2,10 +2,10 @@ class CommentsController < ApplicationController
 
   def create
     if !params[:comment][:user_id].empty?
-      @comment = Comment.create(comment_params)
+      @comment = Comment.create(comment_params(:content, :post_id, :user_id))
     else
       @user = User.create(username: params[:comment][:user_attributes][:username])
-      @comment = Comment.create(content: params[:comment][:content], user_id: @user.id, post_id: params[:comment][:post_id]) 
+      @comment = Comment.create(comment_params(:content, user_attributes: [:username], :post_id)) 
     end 
       redirect_to post_path(comment.post)
   end
@@ -26,8 +26,8 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
-      params.require(:comment).permit(:content, :post_id, :user_id, user_attributes:[:username])
+    def comment_params(*args)
+      params.require(:comment).permit(*args)
     end
 end
 end

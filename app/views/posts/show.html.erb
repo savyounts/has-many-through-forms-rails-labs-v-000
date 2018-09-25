@@ -18,7 +18,7 @@
 </ul>
 
 <h4>New Comment:</h4><br>
-<%= form_for @comment do |f| %>
+<%= form_for @post.comments.build do |f| %>
   <%= f.text_area :content %><br>
   <%= f.hidden_field :post_id, value: @post.id %>
 

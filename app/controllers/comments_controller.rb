@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     end 
       redirect_to post_path(comment.post)
   end
+end
 
 
   # def create 

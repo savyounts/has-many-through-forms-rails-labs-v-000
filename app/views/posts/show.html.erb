@@ -26,7 +26,7 @@
 
   <%= f.collection_select :user_id, User.all, :id, :username, {include_blank: "New User"} %><br>
   Create User:<br>
-  <%= f.fields_for :user, @post.comments.build_user do |u| %>
+  <%= f.fields_for :user, @post.comments.last.build_user do |u| %>
     <%= u.text_field :username %>
   <% end %>
   <%= f.submit "Create Comment" %>

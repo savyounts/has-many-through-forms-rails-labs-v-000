@@ -1,17 +1,15 @@
 
 <h1><%= @post.title %></h1><br>
-<%= @post.content %><br>
+<p><%= @post.content %><p><br><br>
 
-Comments:
+<h4>Comments:</h4>
 <ul>
-  <%=@post.comments.each do |c| %><br>
-    <%= binding.pry %>
+  <%= @post.comments.each do |c| %><br>
     <li><%= "#{c.user_name} says: #{c.content} " %></li>
-
   <% end %>
 </ul>
 
-Users who've commented:
+<h4>Users who've commented:</h4>
 
 <ul>
   <%=@post.commenters.each do |u| %><br>

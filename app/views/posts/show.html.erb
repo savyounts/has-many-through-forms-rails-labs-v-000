@@ -23,6 +23,7 @@
   <%= f.hidden_field :post_id, value: @post.id %>
 
   Select User:<br>
+  <% binding.pry %>
   <%= f.collection_select :user_id, User.all, :id, :username, {include_blank: "New User"} %><br>
   Create User:<br>
   <%= f.fields_for :user, @comment.build_user do |u| %>

@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     end 
       redirect_to post_path(comment.post)
   end
+end
 
   # def create 
   #   if !params[:comment][:user_id].empty? 
@@ -28,4 +29,4 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:content, :post_id, :user_id, user_attributes:[:username])
     end
-  end
+end

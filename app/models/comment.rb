@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
     self.user.username
   end
 
-  def user_attributes(user)
+  def user_attributes=(user)
     self.user = User.find_by(username: user.username, email: user.email)
     self.user.update(user)
   end

@@ -29,6 +29,5 @@
   <%= f.fields_for :user, @comment.build_user do |u| %>
     <%= u.text_field :username %>
   <% end %>
-  <% binding.pry %>
   <%= f.submit "Create Comment" %>
 <% end %>

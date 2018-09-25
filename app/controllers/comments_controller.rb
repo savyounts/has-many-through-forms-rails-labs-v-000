@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
       @comment = Comment.create(comment_params(:content, :post_id, :user_id))
     else
       @user = User.create(username: params[:comment][:user_attributes][:username])
-      @comment = Comment.create(comment_params(:content, user_attributes => [:username], :post_id)) 
+      @comment = Comment.create(comment_params(:content, user_attributes: [:username], :post_id)) 
     end 
       redirect_to post_path(comment.post)
   end
@@ -29,5 +29,4 @@ class CommentsController < ApplicationController
     def comment_params(*args)
       params.require(:comment).permit(*args)
     end
-end
 end

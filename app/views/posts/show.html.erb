@@ -1,30 +1,37 @@
 
-<%= @post.title %><br>
-<%= @post.content %><br>
+<h1><%= @post.title %></h1><br>
+<p><%= @post.content %><p><br><br>
+<p>Categories:<br>
+<% @post.categories.each do |c|%>
+    <%= c.name %>
+  <% end %><p>
 
-Comments:
+<h4>Comments:</h4>
 <ul>
-  <%=@post.comments.each do |c| %><br>
+  <%= @post.comments.each do |c| %><br>
     <li><%= "#{c.user_name} says: #{c.content} " %></li>
   <% end %>
 </ul>
 
-Users who've commented:
+<h4>Users who've commented:</h4>
 
 <ul>
-  <%=@post.commenters.each do |u| %><br>
-    <li><%= u %></li>
+  <%=@post.users.uniq.each do |u| %><br>
+    <li><%=link_to u.username, user_path(u)  %></li>
   <% end %>
 </ul>
 
-New Comment:<br>
-<%= form_for @comment do |f| %>
+<h4>New Comment:</h4><br>
+<%= form_for @post.comments.build do |f| %>
   <%= f.text_area :content %><br>
   <%= f.hidden_field :post_id, value: @post.id %>
 
-  Select User:<%= f.collection_select :user_id, User.all, :id, :username, {include_blank: "New User"} %><br>
-  <%= f.fields_for :user do |u| %>
+  Select User:<br>
+
+  <%= f.collection_select :user_id, User.all, :id, :username, {include_blank: "New User"} %><br>
+  Create User:<br>
+  <%= f.fields_for :user, @post.comments.last.build_user do |u| %>
     <%= u.text_field :username %>
   <% end %>
   <%= f.submit "Create Comment" %>
-  <% end %>
+<% end %>

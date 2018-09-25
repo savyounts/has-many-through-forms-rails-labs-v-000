@@ -3,8 +3,8 @@
   Content <%= f.text_area :content %><br><br>
 
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-  <%= f.fields_for :categorys, post.categories.build do |c| %>
+  <%= f.fields_for :categories, post.categories.build do |c| %>
     <%= c.text_field :name %>
   <% end  %>
-  <%= f.submit "submit" %>
+  <%= f.submit "Create Post" %>
 <% end %>

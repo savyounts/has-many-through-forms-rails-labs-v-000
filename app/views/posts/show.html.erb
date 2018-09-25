@@ -16,7 +16,7 @@
 <h4>Users who've commented:</h4>
 
 <ul>
-  <%=@post.comments.each do |c| %><br>
+  <%=@post.comments.uniq.each do |c| %><br>
     <li><%=link_to c.user.username, user_path(c.user)  %></li>
   <% end %>
 </ul>
